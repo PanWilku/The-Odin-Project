@@ -1,1 +1,1 @@
-It's my first repo in which I'll upload my work on Odin Project using Linux. Repo successfully cloned for the first time. Project requirements can be found here: https://www.theodinproject.com/lessons/foundations-recipes
+This repository has all of my project related with The Odin Project. I already have some knowledge using HTML, CSS and Java Script, but I decided taking the whole course from the scratch. I'm having foundation projects and FululStack Java Script projects here.
