@@ -1,11 +1,5 @@
 function getComputerChoice() {
-    const rock = 0;
-    const paper = 1;
-    const scissors = 2;
-    let roll = Math.random();
-    roll = roll * 3;
-    console.log(roll);
-
+    let roll = Math.random() * 3;
     if (roll < 1) {
         return "rock";
     } else if (roll < 2) {
@@ -15,57 +9,61 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    userInput = prompt("Enter a symbol (rock, paper, scissors)");
-    userInput = userInput.toLowerCase();
-    if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
-        return userInput;
-    } else {
-        return alert("Input a valid symbol"), getHumanChoice();
-    }
+function disableButtons(btnRock, btnPaper, btnScissors) {
+    btnRock.disabled = true;
+    btnPaper.disabled = true;
+    btnScissors.disabled = true;
 }
 
-function playRound(scores, roundsLeft) {
-    const computerChoice = getComputerChoice();
-    const humanChoice = getHumanChoice();
+function playGame() {
+    let scores = { player: 0, computer: 0 };
+    const roundsLimit = 5;
 
     const rules = {
         rock: "scissors",
         paper: "rock",
-        scissors: "paper",
+        scissors: "paper"
     };
 
-    if (computerChoice === humanChoice) {
-        alert(`Draw! Computer: ${scores.computerScore}, You: ${scores.humanScore}. 
-            ${roundsLeft} rounds left!`);
-    } else if (rules[humanChoice] === computerChoice) {
-        scores.humanScore += 1;
-        alert(`You won! The opponent played ${computerChoice}! Computer: ${scores.computerScore}, 
-            You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
-    } else {
-        scores.computerScore += 1;
-        alert(`You lost! The opponent played ${computerChoice}! Computer: ${scores.computerScore}, 
-            You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
+    const messageP = document.querySelector("#message-p");
+    const scoreP = document.querySelector("#score-p");
+
+
+    let btnRock = document.querySelector("#btn1");
+    let btnPaper = document.querySelector("#btn2");
+    let btnScissors = document.querySelector("#btn3");
+
+
+
+    function playRound(playerChoice) {
+        const computerChoice = getComputerChoice();
+        console.log(`Player: ${playerChoice}, Computer: ${computerChoice}`);
+
+        if (playerChoice === computerChoice) {
+            messageP.textContent = "It's a DRAW!";
+        } else if (rules[playerChoice] === computerChoice) {
+            scores.player++;
+            messageP.textContent = `You WIN! ${playerChoice} beats ${computerChoice}`;
+        } else {
+            scores.computer++;
+            messageP.textContent = `You LOSE! ${computerChoice} beats ${playerChoice}`;
+        }
+
+        scoreP.textContent = `Player: ${scores.player} | Computer: ${scores.computer}`;
+
+        if (scores.player === roundsLimit || scores.computer === roundsLimit) {
+            if (scores.player === roundsLimit) {
+                messageP.textContent += " Congrats! You won the game!";
+            } else {
+                messageP.textContent += " Game over! The computer wins.";
+            }
+            disableButtons(btnRock, btnPaper, btnScissors);
+        }
     }
-}
 
-function playGame() {
-    let scores = { humanScore: 0, computerScore: 0 };
-    const roundsLimit = 5;
-
-    for (let roundCount = 1; roundCount <= roundsLimit; roundCount++) {
-        const roundsLeft = roundsLimit - roundCount;
-        playRound(scores, roundsLeft);
-    }
-
-    alert(`The game has ended! Final Score - Computer: ${scores.computerScore}, You: ${scores.humanScore}.`);
-
-
-    if (confirm("Do you want to play again?")) {
-        playGame();
-    } else {
-        alert("Thanks for playing! Goodbye.");
-    }
+    btnRock.addEventListener("click", () => playRound("rock"));
+    btnPaper.addEventListener("click", () => playRound("paper"));
+    btnScissors.addEventListener("click", () => playRound("scissors"));
 }
 
 playGame();
