@@ -4,10 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
 </head>
-<body>
-    <h1>Rock Paper Scrissors game</h1>
-    
-    <script src="script.js"></script>
+<body class="body-window">
+    <div class="game-window">
+        <div class="instruction-window">
+            <h1>Rock Paper Scrissors game</h1>
+            <h3>Pick a symbol to play!</h3>
+            <h3>Score:</h3>
+        </div>
+        <div class="computer-cards-wrapper">
+            <div class="computer-card"></div>
+            <div class="computer-card"></div>
+            <div class="computer-card"></div>
+        </div>
+
+        <div class="player-cards-wrapper">
+            <div class="player-card">
+                <button class="player-card-button" id="btn">Rock</button>
+            </div>
+            <div class="player-card">
+                <button class="player-card-button" id="btn">Paper</button>
+            </div>
+            <div class="player-card">
+                <button class="player-card-button" id="btn">Scissors</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>

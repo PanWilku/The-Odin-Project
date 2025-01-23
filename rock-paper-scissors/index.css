@@ -1,0 +1,62 @@
+.body-window {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-content: center;
+    margin-top: 100px;
+}
+
+.game-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    border: 2px red solid;
+    padding: 75px;
+}
+
+.instruction-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.computer-cards-wrapper {
+    display: flex;
+    border: 2px blue solid;
+    margin: 20px;
+}
+
+.computer-card {
+    display: flex;
+    width: 200px;
+    height: 300px;
+    border: 2px purple solid;
+    margin: 20px;
+}
+
+
+
+.player-cards-wrapper {
+    display: flex;
+    border: 2px blue solid;
+    margin: 20px;
+}
+
+.player-card {
+    display: flex;
+    width: 200px;
+    height: 300px;
+    border: 2px purple solid;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-card-button {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
