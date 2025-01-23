@@ -15,6 +15,12 @@ function disableButtons(btnRock, btnPaper, btnScissors) {
     btnScissors.disabled = true;
 }
 
+function enableButtons(btnRock, btnPaper, btnScissors) {
+    btnRock.disabled = false;
+    btnPaper.disabled = false;
+    btnScissors.disabled = false;
+}
+
 function playGame() {
     let scores = { player: 0, computer: 0 };
     const roundsLimit = 5;
@@ -32,6 +38,16 @@ function playGame() {
     let btnRock = document.querySelector("#btn1");
     let btnPaper = document.querySelector("#btn2");
     let btnScissors = document.querySelector("#btn3");
+    let resetButton = document.querySelector("#reset-b");
+
+    function resetGame() {
+        scores.player = 0;
+        scores.computer = 0;
+    
+        messageP.textContent = "Game reset! Select a symbol!";
+        scoreP.textContent = "Player: 0 | Computer: 0";
+        enableButtons(btnRock, btnPaper, btnScissors);
+    }
 
 
 
@@ -64,6 +80,7 @@ function playGame() {
     btnRock.addEventListener("click", () => playRound("rock"));
     btnPaper.addEventListener("click", () => playRound("paper"));
     btnScissors.addEventListener("click", () => playRound("scissors"));
+    resetButton.addEventListener("click", resetGame);
 }
 
 playGame();
