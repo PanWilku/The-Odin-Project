@@ -109,7 +109,7 @@ function playGame() {
             if (scores.player === roundsLimit || scores.computer === roundsLimit) {
                 disableButtons(btnRock, btnPaper, btnScissors);
             }
-        }, 3000);
+        }, 1500);
 
     }
 
