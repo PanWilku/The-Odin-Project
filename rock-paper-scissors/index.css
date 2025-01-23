@@ -11,8 +11,11 @@
     flex-direction: column;
     align-items: center;
     height: 75%;
-    border: 2px red solid;
     padding: 75px;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #3d1e2a, #000000);
+    color: white;
+    font-style: oblique;
 }
 
 .instruction-window {
@@ -23,7 +26,6 @@
 
 .computer-cards-wrapper {
     display: flex;
-    border: 2px blue solid;
     margin: 20px;
 }
 
@@ -72,18 +74,19 @@
 
 .player-cards-wrapper {
     display: flex;
-    border: 2px blue solid;
     margin: 20px;
+    
 }
 
 .player-card {
     display: flex;
     width: 200px;
     height: 300px;
-    border: 2px purple solid;
     margin: 20px;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    
 }
 
 .player-card-button {
@@ -92,4 +95,69 @@
     height: 100%;
     justify-content: center;
     align-items: center;
+    background-color: #f5f5dc;
+    color: #800020;
+    font-size: 16px;
+    font-weight: bold;
+    flex-direction: column;
+    padding: 5px;
+}
+
+#game-title {
+    color: #d4af37
+}
+
+.win-message {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.lose-message {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.tie-message {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+#reset-b {
+    height: 50px;
+    width: 150px;
+    font-size: 28px;
+    border-radius: 50px;
+    border: none;
+    background-color: #d4af37;
+    color: white;
+}
+
+#reset-b:hover {
+    background-color: #e6c87b;
+}
+
+
+.player-card-icon {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s ease-in;
+}
+
+.player-card-icon:hover {
+    transform: scale(1.1);
+}
+
+#paper-icon {
+    margin-left: -20px;
+}
+
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed; 
+    background-color: #d4af37; 
+    color: #ccc; 
+    border: 5px solid #aaa; 
 }

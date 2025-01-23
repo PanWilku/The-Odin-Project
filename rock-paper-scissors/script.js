@@ -71,17 +71,20 @@ function playGame() {
 
 
 
-
+        messageP.classList.remove("win-message", "tie-message", "lose-message");
 
         if (playerChoice === computerChoice) {
+            messageP.classList.add("tie-message");
             messageP.textContent = "It's a DRAW!";
             disableButtons(btnRock, btnPaper, btnScissors);
         } else if (rules[playerChoice] === computerChoice) {
             scores.player++;
+            messageP.classList.add("win-message");
             messageP.textContent = `You WIN! ${playerChoice} beats ${computerChoice}`;
             disableButtons(btnRock, btnPaper, btnScissors);
         } else {
             scores.computer++;
+            messageP.classList.add("lose-message");
             messageP.textContent = `You LOSE! ${computerChoice} beats ${playerChoice}`;
             disableButtons(btnRock, btnPaper, btnScissors);
         }

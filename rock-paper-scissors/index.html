@@ -10,7 +10,7 @@
 <body class="body-window">
     <div class="game-window">
         <div class="instruction-window">
-            <h1>Rock Paper Scrissors Game</h1>
+            <h1 id="game-title">Rock Paper Scrissors Game</h1>
             <h3 id="message-p">Pick a symbol to play!</h3>
             <h3 id="score-p">Player: 0 | Computer: 0</h3>
             <button id="reset-b">RESET</button>
@@ -50,13 +50,19 @@
 
         <div class="player-cards-wrapper">
             <div class="player-card">
-                <button class="player-card-button" id="btn1">Rock</button>
+                <button class="player-card-button" id="btn1">
+                    <img src="./assets/rock.svg" class="player-card-icon">
+                    Rock</button>
             </div>
             <div class="player-card">
-                <button class="player-card-button" id="btn2">Paper</button>
+                <button class="player-card-button" id="btn2">
+                    <img src="./assets/paper.svg" class="player-card-icon" id="paper-icon">
+                    Paper</button>
             </div>
             <div class="player-card">
-                <button class="player-card-button" id="btn3">Scissors</button>
+                <button class="player-card-button" id="btn3">
+                    <img src="./assets/scissors.svg" class="player-card-icon">
+                    Scissors</button>
             </div>
         </div>
 
