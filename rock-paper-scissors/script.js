@@ -28,3 +28,31 @@ function getHumanChoice() {
 }
 
 console.log(getHumanChoice());
+
+
+function playRound(humanChoice, computerChoice) {
+
+}
+
+
+function playGame(){
+
+
+let humanScore = 0;
+let computerScore = 0;
+const roundsLimit = 5;
+
+
+const computerChoice = getComputerChoice();
+const humanChoice = getHumanChoice();
+
+playRound(computerChoice, humanChoice);
+
+    
+}
+
+
+
+
+playGame();
+
