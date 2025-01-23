@@ -6,7 +6,6 @@ function getComputerChoice() {
     roll = roll * 3;
     console.log(roll);
 
-
     if (roll < 1) {
         return "rock";
     } else if (roll < 2) {
@@ -16,62 +15,37 @@ function getComputerChoice() {
     }
 }
 
-// console.log(getComputerChoice());
-
-
-
 function getHumanChoice() {
-
-    userInput= prompt("Enter a symbol (rock, paper, scissors)");
+    userInput = prompt("Enter a symbol (rock, paper, scissors)");
     userInput = userInput.toLowerCase();
     if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
         return userInput;
     } else {
         return alert("Input a valid symbol"), getHumanChoice();
     }
-
 }
 
-// console.log(getHumanChoice());
-
-
-function playRound(roundCount, scores, roundsLeft) {
+function playRound(scores, roundsLeft) {
     const computerChoice = getComputerChoice();
     const humanChoice = getHumanChoice();
+
+    const rules = {
+        rock: "scissors",
+        paper: "rock",
+        scissors: "paper",
+    };
 
     if (computerChoice === humanChoice) {
         alert(`Draw! Computer: ${scores.computerScore}, You: ${scores.humanScore}. 
             ${roundsLeft} rounds left!`);
-    } else if (humanChoice === "rock") {
-        if (computerChoice === "paper") {
-            scores.computerScore += 1;
-            alert(`You lost! The opponent played paper! Computer: ${scores.computerScore}, 
-                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
-        } else {
-            scores.humanScore += 1;
-            alert(`You won! The opponent played scissors! Computer: ${scores.computerScore}, 
-                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
-        }
-    } else if (humanChoice === "paper") {
-        if (computerChoice === "rock") {
-            scores.humanScore += 1;
-            alert(`You won! The opponent played rock! Computer: ${scores.computerScore}, 
-                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
-        } else {
-            scores.computerScore += 1;
-            alert(`You lost! The opponent played scissors! Computer: ${scores.computerScore}, 
-                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
-        }
-    } else if (humanChoice === "scissors") {
-        if (computerChoice === "rock") {
-            scores.computerScore += 1;
-            alert(`You lost! The opponent played rock! Computer: ${scores.computerScore}, 
-                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
-        } else {
-            scores.humanScore += 1;
-            alert(`You won! The opponent played paper! Computer: ${scores.computerScore}, 
-                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
-        }
+    } else if (rules[humanChoice] === computerChoice) {
+        scores.humanScore += 1;
+        alert(`You won! The opponent played ${computerChoice}! Computer: ${scores.computerScore}, 
+            You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
+    } else {
+        scores.computerScore += 1;
+        alert(`You lost! The opponent played ${computerChoice}! Computer: ${scores.computerScore}, 
+            You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
     }
 }
 
@@ -80,13 +54,13 @@ function playGame() {
     const roundsLimit = 5;
 
     for (let roundCount = 1; roundCount <= roundsLimit; roundCount++) {
-        const roundsLeft = roundsLimit - roundCount; // Calculate rounds left
-        playRound(roundCount, scores, roundsLeft);
+        const roundsLeft = roundsLimit - roundCount;
+        playRound(scores, roundsLeft);
     }
 
     alert(`The game has ended! Final Score - Computer: ${scores.computerScore}, You: ${scores.humanScore}.`);
 
-    // Ask the user if they want to restart the game
+
     if (confirm("Do you want to play again?")) {
         playGame();
     } else {
