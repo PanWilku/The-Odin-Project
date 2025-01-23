@@ -16,18 +16,23 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice());
+// console.log(getComputerChoice());
 
 
 
 function getHumanChoice() {
 
-    userInput = prompt("Enter a symbol (rock, paper, scissors)");
-    return userInput;
+    userInput= prompt("Enter a symbol (rock, paper, scissors)");
+    userInput = userInput.toLowerCase();
+    if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
+        return userInput;
+    } else {
+        return alert("Input a valid symbol"), getHumanChoice();
+    }
 
 }
 
-console.log(getHumanChoice());
+// console.log(getHumanChoice());
 
 
 function playRound(humanChoice, computerChoice) {
@@ -48,7 +53,7 @@ const humanChoice = getHumanChoice();
 
 playRound(computerChoice, humanChoice);
 
-    
+
 }
 
 
