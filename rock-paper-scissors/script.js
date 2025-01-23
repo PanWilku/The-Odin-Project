@@ -8,12 +8,23 @@ function getComputerChoice() {
 
 
     if (roll < 1) {
-        return console.log("rock!");
+        return "rock!";
     } else if (roll < 2) {
-        return console.log("paper");
+        return "paper";
     } else {
-        return console.log("scissors!");
+        return "scissors!";
     }
 }
 
 console.log(getComputerChoice());
+
+
+
+function getHumanChoice() {
+
+    userInput = prompt("Enter a symbol (rock, paper, scissors)");
+    return userInput;
+
+}
+
+console.log(getHumanChoice());
