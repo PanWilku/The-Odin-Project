@@ -8,11 +8,11 @@ function getComputerChoice() {
 
 
     if (roll < 1) {
-        return "rock!";
+        return "rock";
     } else if (roll < 2) {
         return "paper";
     } else {
-        return "scissors!";
+        return "scissors";
     }
 }
 
@@ -35,29 +35,63 @@ function getHumanChoice() {
 // console.log(getHumanChoice());
 
 
-function playRound(humanChoice, computerChoice) {
+function playRound(roundCount, scores, roundsLeft) {
+    const computerChoice = getComputerChoice();
+    const humanChoice = getHumanChoice();
 
+    if (computerChoice === humanChoice) {
+        alert(`Draw! Computer: ${scores.computerScore}, You: ${scores.humanScore}. 
+            ${roundsLeft} rounds left!`);
+    } else if (humanChoice === "rock") {
+        if (computerChoice === "paper") {
+            scores.computerScore += 1;
+            alert(`You lost! The opponent played paper! Computer: ${scores.computerScore}, 
+                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
+        } else {
+            scores.humanScore += 1;
+            alert(`You won! The opponent played scissors! Computer: ${scores.computerScore}, 
+                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
+        }
+    } else if (humanChoice === "paper") {
+        if (computerChoice === "rock") {
+            scores.humanScore += 1;
+            alert(`You won! The opponent played rock! Computer: ${scores.computerScore}, 
+                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
+        } else {
+            scores.computerScore += 1;
+            alert(`You lost! The opponent played scissors! Computer: ${scores.computerScore}, 
+                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
+        }
+    } else if (humanChoice === "scissors") {
+        if (computerChoice === "rock") {
+            scores.computerScore += 1;
+            alert(`You lost! The opponent played rock! Computer: ${scores.computerScore}, 
+                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
+        } else {
+            scores.humanScore += 1;
+            alert(`You won! The opponent played paper! Computer: ${scores.computerScore}, 
+                You: ${scores.humanScore}. ${roundsLeft} rounds left!`);
+        }
+    }
 }
 
+function playGame() {
+    let scores = { humanScore: 0, computerScore: 0 };
+    const roundsLimit = 5;
 
-function playGame(){
+    for (let roundCount = 1; roundCount <= roundsLimit; roundCount++) {
+        const roundsLeft = roundsLimit - roundCount; // Calculate rounds left
+        playRound(roundCount, scores, roundsLeft);
+    }
 
+    alert(`The game has ended! Final Score - Computer: ${scores.computerScore}, You: ${scores.humanScore}.`);
 
-let humanScore = 0;
-let computerScore = 0;
-const roundsLimit = 5;
-
-
-const computerChoice = getComputerChoice();
-const humanChoice = getHumanChoice();
-
-playRound(computerChoice, humanChoice);
-
-
+    // Ask the user if they want to restart the game
+    if (confirm("Do you want to play again?")) {
+        playGame();
+    } else {
+        alert("Thanks for playing! Goodbye.");
+    }
 }
-
-
-
 
 playGame();
-
