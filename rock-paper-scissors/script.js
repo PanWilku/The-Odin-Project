@@ -52,17 +52,38 @@ function playGame() {
 
 
     function playRound(playerChoice) {
+
         const computerChoice = getComputerChoice();
         console.log(`Player: ${playerChoice}, Computer: ${computerChoice}`);
 
+
+        if(computerChoice === "scissors") {
+            const cardWrapper = document.querySelector("#scissors .card-wrapper");
+            console.log(cardWrapper);
+            cardWrapper.classList.add("flipped");
+        }else if(computerChoice === "paper") {
+            const cardWrapper = document.querySelector("#paper .card-wrapper")
+            cardWrapper.classList.add("flipped");
+        } else {
+            const cardWrapper = document.querySelector("#rock .card-wrapper")
+            cardWrapper.classList.add("flipped");
+        }
+
+
+
+
+
         if (playerChoice === computerChoice) {
             messageP.textContent = "It's a DRAW!";
+            disableButtons(btnRock, btnPaper, btnScissors);
         } else if (rules[playerChoice] === computerChoice) {
             scores.player++;
             messageP.textContent = `You WIN! ${playerChoice} beats ${computerChoice}`;
+            disableButtons(btnRock, btnPaper, btnScissors);
         } else {
             scores.computer++;
             messageP.textContent = `You LOSE! ${computerChoice} beats ${playerChoice}`;
+            disableButtons(btnRock, btnPaper, btnScissors);
         }
 
         scoreP.textContent = `Player: ${scores.player} | Computer: ${scores.computer}`;
@@ -75,6 +96,18 @@ function playGame() {
             }
             disableButtons(btnRock, btnPaper, btnScissors);
         }
+
+
+
+        setTimeout(() => {
+            const allCards = document.querySelectorAll(".card-wrapper.flipped");
+            allCards.forEach(card => card.classList.remove("flipped"));
+            enableButtons(btnRock, btnPaper, btnScissors);
+            if (scores.player === roundsLimit || scores.computer === roundsLimit) {
+                disableButtons(btnRock, btnPaper, btnScissors);
+            }
+        }, 3000);
+
     }
 
     btnRock.addEventListener("click", () => playRound("rock"));

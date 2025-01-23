@@ -3,26 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors Game</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="./assets/favicon.png" type="image/png">
 </head>
 <body class="body-window">
     <div class="game-window">
         <div class="instruction-window">
-            <h1>Rock Paper Scrissors game</h1>
+            <h1>Rock Paper Scrissors Game</h1>
             <h3 id="message-p">Pick a symbol to play!</h3>
             <h3 id="score-p">Player: 0 | Computer: 0</h3>
             <button id="reset-b">RESET</button>
         </div>
         <div class="computer-cards-wrapper">
-            <div class="computer-card">
-                <img src="./assets/rock.svg" alt="rock-icon" class="rpc-icons">
+            <div class="computer-card" id="rock">
+                <div class="card-wrapper">
+                    <div class="card-front">
+                        <img src="./assets/card-bg.svg" alt="card-bg" class="rpc-icons">
+                    </div>
+                    <div class="card-back">
+                        <img src="./assets/rock.svg" alt="scissors-icon" class="rpc-icons">
+                    </div>
+                </div>
             </div>
-            <div class="computer-card">
-                <img src="./assets/paper.svg" alt="paper-icon" class="rpc-icons">
+            <div class="computer-card" id="paper">
+                <div class="card-wrapper">
+                    <div class="card-front">
+                        <img src="./assets/card-bg.svg" alt="card-bg" class="rpc-icons">
+                    </div>
+                    <div class="card-back">
+                        <img src="./assets/paper.svg" alt="scissors-icon" class="rpc-icons">
+                    </div>
+                </div>
             </div>
-            <div class="computer-card">
-                <img src="./assets/scissors.svg" alt="scissors-icon" class="rpc-icons">
+            <div class="computer-card" id="scissors">
+                <div class="card-wrapper">
+                    <div class="card-front">
+                        <img src="./assets/card-bg.svg" alt="card-bg" class="rpc-icons">
+                    </div>
+                    <div class="card-back">
+                        <img src="./assets/scissors.svg" alt="scissors-icon" class="rpc-icons">
+                    </div>
+                </div>
             </div>
         </div>
 
