@@ -1,5 +1,5 @@
 .container {
-    border: 2px red solid;
+    border: 8px black solid;
     display: flex;
     flex-wrap: wrap;
     height: 1000px;
@@ -10,4 +10,51 @@
 
 .square {
     background-color: white;
+}
+
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
+}
+
+
+.buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    gap: 10px;
+
+}
+
+#size {
+    width: 2em;
+    height: 2em;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 32px;
+    padding-left: 15px;
+    margin: 10px;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+}
+
+#size-button, #reset-button {
+    width: 200px;
+    font-size: 24px;
+    border-radius: 25px;
+    background-color: bisque;
+    padding: 4px;
+    font-weight: bold;
+}
+
+#label {
+
+    font-size: 32px;
 }
