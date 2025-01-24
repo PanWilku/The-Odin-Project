@@ -1,3 +1,13 @@
 .container {
     border: 2px red solid;
+    display: flex;
+    flex-wrap: wrap;
+    height: 1000px;
+    width: 1000px;
+    box-sizing: content-box;
+}
+
+
+.square {
+    background-color: white;
 }
