@@ -27,10 +27,15 @@
 }
 
 #display {
-    width: 85%;
+    display: flex;
+    width: 80%;
     height: 100%;
     background-color: beige;
     border-radius: 25px;
+    justify-content: end;
+    align-items: center;
+    font-size: 48px;
+    padding-right: 30px;
 }
 
 #buttons-wrapper {
