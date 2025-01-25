@@ -1,0 +1,102 @@
+#calculator-wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(12, 57%, 51%);
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator-window {
+    display: flex;
+    width: 40vh;
+    height: 60vh;
+    background-color: hsl(30, 4%, 59%);
+    border-radius: 25px;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#display-wrapper {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    justify-content: center;
+    padding-top: 10%;
+}
+
+#display {
+    width: 85%;
+    height: 100%;
+    background-color: beige;
+    border-radius: 25px;
+}
+
+#buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ac-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-left: 310px;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    
+}
+
+.ac-wrapper:hover {
+    opacity: 50%;
+}
+
+.ac-button {
+    display: flex;
+    width: 80px;
+    height: 80px; /* Set a fixed height */
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    background-color: hsl(12, 57%, 51%);
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+#buttons-display {
+    display: flex;
+    width: 85%; /* Adjust as needed */
+    background-color: beige;
+    border-radius: 25px;
+    justify-content: center; /* Align items to the left */
+    flex-wrap: wrap; /* Enable wrapping to the next row */
+    gap: 20px; /* Add spacing between buttons */
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
+.button {
+    display: flex;
+    flex: 0 0 calc(25% - 20px); /* 3 buttons per row, minus gap space */
+    height: 80px; /* Set a fixed height */
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    background-color: hsl(96, 67%, 63%);
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.button:hover {
+    opacity: 50%;
+}
