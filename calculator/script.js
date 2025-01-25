@@ -7,8 +7,8 @@ console.log(buttonAction);
 display.innerText = 0;
 let operator;
 numArr = [];
-let num1 = [];
-let num2 = [];
+let num1 = "";
+let num2 = "";
 
 buttonAction.forEach((button) => {
     button.addEventListener("click", () => {
@@ -42,11 +42,11 @@ buttonAction.forEach((button) => {
                 } else {
                     display.innerText = display.innerText + button.innerText;
                 }
-                num1.push(button.innerText);
+                num1 = num1 + button.innerText;
                 console.log("num1 added");
             } else if (operator != null) {
                 display.innerText = display.innerText + button.innerText;
-                num2.push(button.innerText);
+                num2 = num2 + button.innerText;
                 console.log("num2 added");
             }
         }
@@ -71,5 +71,18 @@ buttonAction.forEach((button) => {
 
 function operate(operator, num1, num2) {
 
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+    let finalResult;
+    if(operator === "+") {
+        finalResult = num1 + num2;
+    } else if (operator === "-") {
+        finalResult = num1 -num2;
+    } else if (operator === "÷") {
+        finalResult = num1 / num2;
+    } else if (operator === "x") {
+        finalResult = num1 * num2;
+    }
 
+    display.innerText = parseFloat(finalResult.toFixed(3));
 }
