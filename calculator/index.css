@@ -15,6 +15,7 @@
     border-radius: 25px;
     flex-direction: column;
     gap: 30px;
+    box-shadow: 12px 12px hsl(24, 4%, 26%);
 }
 
 #display-wrapper {
