@@ -7,8 +7,37 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
+    <div>
+        <form class="form-wrapper">
+            <div class="input-wrapper">
+                <label for="book-name" class="label">Book name</label>
+                <input placeholder="Book name" id="book-name" max="25" required>
+            </div>
 
+            <div class="input-wrapper">
+                <label for="book-author" class="label">Author</label>
+                <input placeholder="Book author" id="book-author" max="25" required>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="book-pages" class="label">Pages</label>
+                <input type="number" placeholder="Pages" id="book-pages" max="25" required>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="book-read" class="label">Read</label>
+                <select id="book-read" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div class="input-wrapper">
+                <button type="submit" id="submit-button">Submit</button>
+            </div>
+
+        </form>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

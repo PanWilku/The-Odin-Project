@@ -1,0 +1,46 @@
+body {
+    background: rgb(240,151,41);
+    background: linear-gradient(180deg, rgba(240,151,41,1) 0%, rgba(252,204,70,1) 100%);
+    min-height: 100vh;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-start;
+}
+
+.label {
+    display: flex;
+    justify-content: end;
+    width: 100px;
+    align-items: center;
+}
+
+select, input {
+    width: 200px; /* Or match the width of your input fields */
+    height: 30px; /* Adjust the height as needed to match */
+    padding: 5px; /* Add padding for consistent styling */
+    box-sizing: border-box; /* Ensures consistent box sizing */
+    border-radius: 8px;
+    border: none;
+}
+
+#submit-button {
+    margin-left: 65%;
+    font-size: 18px;
+}
+
+input:focus, select:focus {
+    border: 2px solid hsl(83, 86%, 43%);
+    outline: none;
+}
