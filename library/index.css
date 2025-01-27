@@ -44,3 +44,33 @@ input:focus, select:focus {
     border: 2px solid hsl(83, 86%, 43%);
     outline: none;
 }
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    flex-wrap: wrap;
+    background: rgb(230, 73, 53);
+    background: linear-gradient(180deg, rgb(214, 70, 13) 0%, rgb(233, 131, 47) 100%);
+    border-radius: 20px;
+    padding: 5%;
+    overflow-wrap: break-word; /* Allows breaking long words */
+    word-break: break-word; /* Ensures words break properly */
+}
+
+
+p {
+    margin: 5px 0; /* Reduces vertical spacing */
+    padding: 0;    /* Removes extra padding */
+  }
+
+.bold {
+    font-weight: bold;
+}
+
+
+.book-card-wrapper {
+    display: flex;
+    width: 100%;
+    gap: 5%;
+}
