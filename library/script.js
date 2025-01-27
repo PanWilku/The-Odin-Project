@@ -1,20 +1,28 @@
-  
 const bookCardWrapper = document.querySelector(".book-card-wrapper"); 
 
 const myLibrary = [];
 const book1 = new Book("Harry Potter", "J.K Rowling", "300", "Yes");
 myLibrary.push(book1);
 
-const book1Card = document.createElement("div");
-book1Card.classList.add("card");
-book1Card.innerHTML = `
-<h3>${book1.title}</h3>
-<p><span class="bold">Author:</span> ${book1.author}</p>
-<p><span class="bold">Pages:</span> ${book1.pages}</p>
-<p><span class="bold">Read:</span> ${book1.read}</p>
-`;
+function createCard(book) {
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("card");
+    bookCard.innerHTML = `
+        <h3>${book.title}</h3>
+        <p><span class="bold">Author:</span> ${book.author}</p>
+        <p><span class="bold">Pages:</span> ${book.pages}</p>
+        <p><span class="bold">Read:</span> <span class="read-status">${book.read}</span></p>
+        <button class="book-read-b">Change Read Status</button>
+    `;
+    bookCardWrapper.appendChild(bookCard);
 
-bookCardWrapper.appendChild(book1Card);
+    const changeStatusButton = bookCard.querySelector(".book-read-b");
+    changeStatusButton.addEventListener("click", () => {
+
+        book.read = book.read === "Yes" ? "No" : "Yes";
+        bookCard.querySelector(".read-status").textContent = book.read;
+    });
+}
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -23,6 +31,8 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+createCard(book1);
+
 const form = document.querySelector(".form-wrapper");
 
 form.addEventListener("submit", function (e) {
@@ -30,10 +40,8 @@ form.addEventListener("submit", function (e) {
     console.log("Submit event triggered!");
 
     const formData = new FormData(form);
-
-        const bookObj = [];
+    const bookObj = [];
     for (const [key, value] of formData.entries()) {
-
         bookObj.push(value);
         console.log(`${key}: ${value}`);
     }
@@ -43,19 +51,5 @@ form.addEventListener("submit", function (e) {
     console.log(myLibrary);
 
     bookCardWrapper.innerHTML = "";
-
-    for (const book of myLibrary) {
-        const Card = document.createElement("div");
-        Card.classList.add("card");
-        Card.innerHTML = `
-        <h3>${book.title}</h3>
-        <p><span class="bold">Author:</span> ${book.author}</p>
-        <p><span class="bold">Pages:</span> ${book.pages}</p>
-        <p><span class="bold">Read:</span> ${book.read}</p>
-      `;
-        bookCardWrapper.appendChild(Card);
-    }
-
+    myLibrary.forEach(createCard);
 });
-
-
