@@ -13,6 +13,7 @@ function createCard(book) {
         <p><span class="bold">Pages:</span> ${book.pages}</p>
         <p><span class="bold">Read:</span> <span class="read-status">${book.read}</span></p>
         <button class="book-read-b">Change Read Status</button>
+        <button class="book-remove">Remove</button>
     `;
     bookCardWrapper.appendChild(bookCard);
 
@@ -21,6 +22,13 @@ function createCard(book) {
 
         book.read = book.read === "Yes" ? "No" : "Yes";
         bookCard.querySelector(".read-status").textContent = book.read;
+    });
+
+    const removeButton = bookCard.querySelector(".book-remove");
+    removeButton.addEventListener("click", () => {
+
+        bookCard.remove();
+        myLibrary.pop();
     });
 }
 
