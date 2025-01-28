@@ -15,9 +15,9 @@ const gameBoard = (function() {
 
 
     const printBoard = () => {
-        console.log(board[0], board[1], board[2]);
-        console.log(board[3], board[4], board[5]);
-        console.log(board[6], board[7], board[8]);
+        console.log(`[${board[0]}] | [${board[1]}], [${board[2]}]`);
+        console.log(`[${board[3]}] | [${board[4]}], [${board[5]}]`);
+        console.log(`[${board[6]}] | [${board[7]}], [${board[8]}]`);
     }
 
     const getBoard = () => board;
@@ -113,14 +113,62 @@ const gameController = (function() {
         console.log("Game reset!");
     }
 
+    const gameOver = (cells) => {
+
+          // Disable cell clicks by removing event listeners
+        cells.forEach((cell) => {
+        cell.removeEventListener("click", handleClick);
+        });
+        console.log("Cells disabled after winner found!");
+    };
+
     //player move
     const makeMove = (index) => {
         gameBoard.updateBoard(index, currentPlayer.mark);
         gameBoard.printBoard();
         const result = checkWinner();
+        if(result) {
+            return result; 
+        };
         switchTurn();
     }
     
-    return {makeMove, checkWinner, resetGame}
+    return {makeMove, checkWinner, resetGame, gameOver}
 
 })();
+
+
+
+const cells = document.querySelectorAll(".cell");
+const resetButton = document.querySelector("#reset-btn");
+const infoDisplay = document.querySelector(".info-display-winner");
+
+
+cells.forEach((cell) => {
+    cell.addEventListener("click", handleClick);
+});
+
+
+function handleClick(e) {
+        const index = e.target.dataset.index;
+        const winner = gameController.makeMove(index);
+        if (winner === "X" || winner === "O" || winner === "draw") {
+            const winnerMsg = document.createElement("h1");
+            winnerMsg.classList.add("winner-msg");
+            winnerMsg.textContent = `${winner}`;
+            infoDisplay.appendChild(winnerMsg);
+            gameController.gameOver(cells);
+        }
+        const board = gameBoard.getBoard();
+        e.target.textContent = board[index];
+
+};
+
+resetButton.addEventListener("click", () => {
+    gameController.resetGame();
+    cells.forEach((cell) => {
+        cell.textContent = "";
+        cell.addEventListener("click", handleClick);
+        infoDisplay.innerHTML = "";
+    });
+});
