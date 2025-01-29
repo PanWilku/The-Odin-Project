@@ -155,6 +155,32 @@ const playerXPointsElement = document.createElement("h1");
 const playerOPointsElement = document.createElement("h1");
 const playerXPointsDiv = document.querySelector(".px-points");
 const playerOPointsDiv = document.querySelector(".po-points");
+const changeXNameBtn = document.querySelector("#px-name-btn");
+const playerXName = document.querySelector("#px-name");
+const playerOName = document.querySelector("#po-name");
+const changeONameBtn = document.querySelector("#po-name-btn");
+
+
+changeXNameBtn.addEventListener("click", () => {
+    const pname = prompt("Enter your name:");
+    if(pname.length < 15) {
+        playerXName.textContent = `${pname}`;
+    } else {
+        alert("Name has to be shorter than 15 characters!");
+    };
+
+});
+
+changeONameBtn.addEventListener("click", () => {
+    const pname = prompt("Enter your name:");
+    if(pname.length < 15) {
+        playerOName.textContent = `${pname}`;
+    } else {
+        alert("Name has to be shorter than 15 characters!");
+    };
+
+});
+
 
 
 cells.forEach((cell) => {
