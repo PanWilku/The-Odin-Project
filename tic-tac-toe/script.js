@@ -8,10 +8,15 @@ const gameBoard = (function() {
     const updateBoard = (index, mark) => {
         if (board[index] === "") {
             board[index] = mark;
-        } else {
-            console.log("cell is taken")
-        }
-    }
+            if(board[index] === "X") {
+                cells[index].classList.add("x-color"); 
+                } else {
+                    cells[index].classList.add("o-color");
+                };
+            } else {
+                console.log("cell is taken");
+            };
+        };
 
 
     const printBoard = () => {
@@ -92,7 +97,7 @@ const gameController = (function() {
         for(const pattern of patterns) {
             const [a, b, c] = pattern;
             if(board[a] !== "" && board[a] === board[b] && board[b] === board[c]) {
-                console.log(`${board[a]} wins!`)
+                console.log(`${board[a]} wins!`);
                 return board[a]; // game won
             }
         }
@@ -169,6 +174,8 @@ resetButton.addEventListener("click", () => {
     cells.forEach((cell) => {
         cell.textContent = "";
         cell.addEventListener("click", handleClick);
+        cell.classList.remove("x-color");
+        cell.classList.remove("o-color");
         infoDisplay.innerHTML = "";
     });
 });

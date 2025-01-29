@@ -140,6 +140,15 @@ align-items: center;
 }
 
 
+.x-color {
+  color: rgb(212, 36, 23);
+}
+
+.o-color {
+  color: hsl(120, 90%, 42%)
+}
+
+
 
 
 
