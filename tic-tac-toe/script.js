@@ -101,13 +101,11 @@ const gameController = (function() {
                 return {winner: board[a],
                         winningPattern: pattern,
                 }; // game won
-            }
-        }
-        
-        if(!board.includes("")) {
-            console.log("It's draw!");
-            return "draw";
-        }
+            } else if(!board.includes("")) {
+                console.log("It's draw!");
+                return {winner: "draw", winningPattern: pattern};
+            };
+        };
 
         return false;
 
@@ -193,7 +191,7 @@ function handleClick(e) {
         const result = gameController.makeMove(index);
         if (result) {
             const { winner, winningPattern } = result;
-        
+            console.log(winner);
             if (winner === "X" || winner === "O") {
               winningPattern.forEach((cellIndex) => {
                 cells[cellIndex].classList.add("animate-flicker");
@@ -219,15 +217,14 @@ function handleClick(e) {
               playerOPointsDiv.appendChild(playerOPointsElement);
         
               gameController.gameOver(cells);
-            }
-            else if (winner === "draw") {
+            } else if (winner === "draw") {
               const winnerMsg = document.createElement("h1");
               winnerMsg.classList.add("winner-msg");
               winnerMsg.textContent = "It's a draw!";
               infoDisplay.appendChild(winnerMsg);
               gameController.gameOver(cells);
-            }
-          }
+            };
+          };
         
           const board = gameBoard.getBoard();
           e.target.textContent = board[index];
