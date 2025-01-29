@@ -98,7 +98,9 @@ const gameController = (function() {
             const [a, b, c] = pattern;
             if(board[a] !== "" && board[a] === board[b] && board[b] === board[c]) {
                 console.log(`${board[a]} wins!`);
-                return board[a]; // game won
+                return {winner: board[a],
+                        winningPattern: pattern,
+                }; // game won
             }
         }
         
@@ -120,7 +122,7 @@ const gameController = (function() {
 
     const gameOver = (cells) => {
 
-          // Disable cell clicks by removing event listeners
+          // Disable cell clicks
         cells.forEach((cell) => {
         cell.removeEventListener("click", handleClick);
         });
@@ -147,6 +149,12 @@ const gameController = (function() {
 const cells = document.querySelectorAll(".cell");
 const resetButton = document.querySelector("#reset-btn");
 const infoDisplay = document.querySelector(".info-display-winner");
+let playerXPoints = 0;
+let playerOPoints = 0;
+const playerXPointsElement = document.createElement("h1");
+const playerOPointsElement = document.createElement("h1");
+const playerXPointsDiv = document.querySelector(".px-points");
+const playerOPointsDiv = document.querySelector(".po-points");
 
 
 cells.forEach((cell) => {
@@ -156,26 +164,55 @@ cells.forEach((cell) => {
 
 function handleClick(e) {
         const index = e.target.dataset.index;
-        const winner = gameController.makeMove(index);
-        if (winner === "X" || winner === "O" || winner === "draw") {
-            const winnerMsg = document.createElement("h1");
-            winnerMsg.classList.add("winner-msg");
-            winnerMsg.textContent = `${winner}`;
-            infoDisplay.appendChild(winnerMsg);
-            gameController.gameOver(cells);
-        }
-        const board = gameBoard.getBoard();
-        e.target.textContent = board[index];
+        const result = gameController.makeMove(index);
+        if (result) {
+            const { winner, winningPattern } = result;
+        
+            if (winner === "X" || winner === "O") {
+              winningPattern.forEach((cellIndex) => {
+                cells[cellIndex].classList.add("animate-flicker");
+              });
 
+              const winnerMsg = document.createElement("h1");
+              winnerMsg.classList.add("winner-msg");
+              winnerMsg.textContent = `${winner}`;
+              infoDisplay.appendChild(winnerMsg);
+
+              if(winner === "X") {
+                playerXPoints += 1;
+              } else if(winner === "O") {
+                playerOPoints += 1;
+              };
+
+
+
+              playerXPointsElement.textContent = playerXPoints;
+              playerOPointsElement.textContent = playerOPoints;
+
+              playerXPointsDiv.appendChild(playerXPointsElement);
+              playerOPointsDiv.appendChild(playerOPointsElement);
+        
+              gameController.gameOver(cells);
+            }
+            else if (winner === "draw") {
+              const winnerMsg = document.createElement("h1");
+              winnerMsg.classList.add("winner-msg");
+              winnerMsg.textContent = "It's a draw!";
+              infoDisplay.appendChild(winnerMsg);
+              gameController.gameOver(cells);
+            }
+          }
+        
+          const board = gameBoard.getBoard();
+          e.target.textContent = board[index];
 };
 
 resetButton.addEventListener("click", () => {
     gameController.resetGame();
     cells.forEach((cell) => {
-        cell.textContent = "";
-        cell.addEventListener("click", handleClick);
-        cell.classList.remove("x-color");
-        cell.classList.remove("o-color");
-        infoDisplay.innerHTML = "";
+      cell.textContent = "";
+      cell.addEventListener("click", handleClick);
+      cell.classList.remove("x-color", "o-color", "animate-flicker");
     });
-});
+    infoDisplay.innerHTML = "";
+  });

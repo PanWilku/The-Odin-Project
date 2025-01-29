@@ -71,9 +71,11 @@ cursor: pointer;
 
 .controls {
     display: flex;
+    flex-direction: column;
     width: 100%;
     justify-content: center;
     align-items: center;
+    gap: 100px;
 }
 
 .controls-wrapper {
@@ -146,6 +148,48 @@ align-items: center;
 
 .o-color {
   color: hsl(120, 90%, 42%)
+}
+
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+.animate-flicker {
+   -webkit-animation: flickerAnimation .9s infinite;
+   -moz-animation: flickerAnimation .9s infinite;
+   -o-animation: flickerAnimation .9s infinite;
+    animation: flickerAnimation .9s infinite;
+}
+
+.px-points {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.po-points {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 
 
