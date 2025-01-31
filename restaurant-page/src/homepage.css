@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#header {
+    font-size: 3em;
+}
+
+.p-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 24px;
+    word-wrap: break-word;
+    line-height: 1.6;
+}
+
+.img-container {
+    display: flex; /* Aligns images in a row */
+    justify-content: center; /* Centers images horizontally */
+    gap: 10px; /* Adds spacing between images */
+    max-width: 100%; /* Ensures container does not overflow */
+    overflow: hidden;
+    padding: 10px;
+}
+
+.img-container img {
+    width: 45%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px; 
+}

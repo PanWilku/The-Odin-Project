@@ -1,0 +1,78 @@
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 80vh;
+    overflow-y: auto; /* Oadd scrollbar */
+    scrollbar-width: auto; 
+    scrollbar-color: #d32f2f #f8f8f8; 
+}
+
+.menu-container::-webkit-scrollbar {
+    width: 8px; 
+}
+
+.menu-container::-webkit-scrollbar-thumb {
+    background-color: #d32f2f; 
+    border-radius: 10px; 
+}
+
+#menu-header {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #d32f2f;
+}
+
+.menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    padding-bottom: 40px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 320px;
+    transition: transform 0.3s;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.menu-info {
+    text-align: center;
+    padding: 15px;
+}
+
+.menu-info h3 {
+    margin: 10px 0;
+    font-size: 1.5em;
+}
+
+.menu-info p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #d32f2f;
+}
