@@ -5,7 +5,8 @@
     max-height: 80vh;
     overflow-y: auto; /* Oadd scrollbar */
     scrollbar-width: auto; 
-    scrollbar-color: #d32f2f #f8f8f8; 
+    scrollbar-color: #d32f2f #f8f8f8;
+    border-radius: 10px;
 }
 
 .menu-container::-webkit-scrollbar {

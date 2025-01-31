@@ -7,6 +7,7 @@
 
 #header {
     font-size: 3em;
+    color: #d32f2f;
 }
 
 .p-container {
@@ -20,10 +21,10 @@
 }
 
 .img-container {
-    display: flex; /* Aligns images in a row */
-    justify-content: center; /* Centers images horizontally */
-    gap: 10px; /* Adds spacing between images */
-    max-width: 100%; /* Ensures container does not overflow */
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    max-width: 100%; 
     overflow: hidden;
     padding: 10px;
 }
