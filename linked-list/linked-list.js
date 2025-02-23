@@ -59,5 +59,110 @@ class LinkedList  {
         return counter;
     }
 
-    pop()
+    pop() {
+        this.tail = null;
+    }
+
+    contains(value) {
+        let head = this.head;
+        while(head !== null) {
+            if(head.value === value) {
+                return true;
+            } else {
+                head = head.nextNode;
+            }
+        }
+        return false;
+    }
+
+
+    find(value) {
+        let head = this.head;
+        let indexCounter = 0;
+        const index = [];
+
+        while(head !== null) {
+            if(value === head.value) {
+                index.push(indexCounter);
+                head = head.nextNode;
+                indexCounter ++;
+            } else {
+                head = head.nextNode;
+                indexCounter++;   
+            }
+        }
+        
+        if(index.length === 0) {
+            return null;
+        } else {
+            return index;
+        }
+
+
+    }
+
+
+    toString() {
+        let result = "";
+        let head = this.head;
+        while( head !== null) {
+            result += `( ${head.value} ) -> `;
+            head = head.nextNode;
+        }
+        result += "null";
+    }
+
+    insertAt(value, index) {
+        const newNode = new Node(value);
+        let head = this.head;
+        let counter = 0;
+
+        if(index === 0) {
+            newNode.nextNode = this.head;
+            this.head = newNode;
+            return;
+        }
+
+        while(head !== null && counter < index - 1) {
+            head = head.nextNode;
+            counter++;
+        }
+
+        if(head === null) {
+            throw new Error("out of bound")
+        }
+
+        newNode.nextNode = head.nextNode;
+        head.nextNode = newNode;
+    }
+
+    removeAt(index) {
+        if (this.head === null) {
+            throw new Error("List is empty");
+        }
+    
+        if (index === 0) {
+            //need to use this, because we do a reference to this list.
+            //variable head below doesnt refer to this list directly,
+            //and its purpose is to reference to current iterated node in a list
+            //so to change head, we actually need to change property of list itself.
+            this.head = this.head.nextNode;
+            return;
+        }
+    
+        let head = this.head;
+        let counter = 0;
+    
+        while (head !== null && counter < index - 1) {
+            head = head.nextNode;
+            counter++;
+        }
+    
+        if (head === null || head.nextNode === null) {
+            throw new Error("Index out of bounds");
+        }
+
+        //removing node happens here. Im linking next node to next next one
+        head.nextNode = head.nextNode.nextNode;
+    }
 }
