@@ -1,7 +1,7 @@
-import { Node } from "./node";
+import { Node } from "./node.js";
 
-class LinkedList  {
-    constuctor(value) {
+export class LinkedList  {
+    constructor(value) {
         this.head = value;
         this.tail = null;
     }
@@ -13,7 +13,7 @@ class LinkedList  {
             this.head = node;
             this.tail = node;
         } else {
-            this.tail.next = node;
+            this.tail.nextNode = node;
             this.tail = node;
         }
     }
@@ -110,6 +110,7 @@ class LinkedList  {
             head = head.nextNode;
         }
         result += "null";
+        return result;
     }
 
     insertAt(value, index) {
