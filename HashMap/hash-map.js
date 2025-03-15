@@ -2,7 +2,7 @@ class HashMap {
   constructor(initialCapacity = 8, loadFactor = 0.75) {
     this.capacity = initialCapacity;
     this.loadFactor = loadFactor;
-    this.size = 0;r
+    this.size = 0;
     // creating bbuckets, filling with null, then replacing with [] to make actual space
     this.buckets = new Array(this.capacity).fill(null).map(() => []);
   }
@@ -144,3 +144,21 @@ class HashMap {
     return hashCode;
   }
 }
+
+const test = new HashMap() // or HashMap() if using a factory
+
+test.set('apple', 'red')
+test.set('banana', 'yellow')
+test.set('carrot', 'orange')
+test.set('dog', 'brown')
+test.set('elephant', 'gray')
+test.set('frog', 'green')
+test.set('grape', 'purple')
+test.set('hat', 'black')
+test.set('ice cream', 'white')
+test.set('jacket', 'blue')
+test.set('kite', 'pink')
+test.set('lion', 'golden')
+
+
+console.log(test);
